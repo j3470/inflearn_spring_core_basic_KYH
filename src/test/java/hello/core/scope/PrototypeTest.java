@@ -8,24 +8,23 @@ import org.springframework.context.annotation.Scope;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-import static org.assertj.core.api.Assertions.*;
-
 public class PrototypeTest {
 
     @Test
-    void prototypeBeanFind() {
+    public void prototypeTest() {
         AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(PrototypeBean.class);
 
-        PrototypeBean prototypeBean1 = ac.getBean(PrototypeBean.class);
-        PrototypeBean prototypeBean2 = ac.getBean(PrototypeBean.class);
+        System.out.println("find prototypeBean1");
+        PrototypeBean bean1 = ac.getBean(PrototypeBean.class);
 
-        System.out.println("protoypeBean1 = " + prototypeBean1);
-        System.out.println("protoypeBean2 = " + prototypeBean2);
+        System.out.println("find prototypeBean2");
+        PrototypeBean bean2 = ac.getBean(PrototypeBean.class);
 
-        prototypeBean1.destroy();
-        prototypeBean2.destroy();
+        System.out.println("bean1 = " + bean1);
+        System.out.println("bean2 = " + bean2);
 
-        assertThat(prototypeBean1).isNotSameAs(prototypeBean2);
+        Assertions.assertThat(bean1).isNotSameAs(bean2);
+
         ac.close();
     }
 
