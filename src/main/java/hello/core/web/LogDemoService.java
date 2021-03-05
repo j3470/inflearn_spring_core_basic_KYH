@@ -9,17 +9,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class LogDemoService {
 
-    /*
-    // using :: ObjectProvider
-    private final ObjectProvider<MyLogger> myLoggerProvider;
-
-    public void logic(String id) {
-        MyLogger myLogger = myLoggerProvider.getObject();
-        myLogger.log("service id = " + id);
-    }
-    */
-
-    // using :: proxyMode = ScopedProxyMode.TARGET_CLASS
     private final MyLogger myLogger;
 
     public void logic(String id) {
